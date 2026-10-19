@@ -67,6 +67,6 @@ node scripts/render.cjs --input examples/post.example.json --out /tmp/xhs-previe
 
 ## illustrated 页面
 
-核心内容页优先用 illustrated：image 为项目内插画路径，image_alt 说明场景，title 为图下主题名，items 为2–3段正文，每项 title 是段首重点词、text 为具体论述。sources 放简洁引用；source_ids 也可逐段显示。插画建议3:2无字横图。样稿配图和封面使用同一画风，正文不再拆成小图标卡片。
+核心内容页优先用 illustrated：image 为项目内插画路径，image_alt 说明场景，title 为图下主题名，items 为2–3段正文，每项 title 是段首重点词、text 为具体论述。sources 放简洁引用；source_ids 也可逐段显示。紧凑内页使用 `layout: "compact"`，插画建议2:1无字横图。每项 `title` 作为较大的独立小标题，`lead` 放具体症状（32px），`text` 放研究与机制（28px）。需要图内名称时，`image_labels` 为 `{text,x,y}` 数组，坐标是图内0–100百分比；先看图再定坐标，避免遮挡关键形态。样稿配图和封面使用同一画风，正文不再拆成小图标卡片。
 
 这类页面的图与文字可分别替换；内容超高时拆页或缩短重复句。自动检查覆盖图下正文，仍需视觉检查图像和细字重的手机可读性。

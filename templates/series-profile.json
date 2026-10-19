@@ -59,6 +59,12 @@
     "body_weight": "300–400",
     "body_color": "dark charcoal",
     "paragraphs": "2–3 substantive paragraphs",
-    "evidence_overview": "table or structured comparison"
+    "evidence_overview": "table or structured comparison",
+    "layout": "compact",
+    "art_height": 470,
+    "detail_insets": "1–2 when needed for morphology",
+    "symptom_title_size": 35,
+    "symptom_lead_size": 32,
+    "body_size": 28
   }
 }
