@@ -1,10 +1,12 @@
 # Redbook Create
 
-**一张内容截图 → 一篇完整笔记 → 持续积累的个人选题库。**
+**输入内容截图，输出成套图片。沿用固定画风、内容审核和选题库。**
 
 A reusable Codex skill for evidence-based Xiaohongshu carousels. Chinese editorial workflows, a topic library, illustration direction, source review, and a portable 3:4 renderer.
 
 ![Accepted cover style](examples/cover-reference.png)
+
+默认只交付成套图片，不附加发布标题、标签或长正文。封面标题和必要引用直接呈现在图片里。其他材料按需提供。
 
 ## 能做什么
 
@@ -13,7 +15,7 @@ A reusable Codex skill for evidence-based Xiaohongshu carousels. Chinese editori
 - **内容编辑**：封面问句＋场景副标题；内页使用“证据强度”等直接标题。
 - **封面与内页插画**：统一二维动画画风，核心内页采用大幅场景插画＋下方详细论述，正文使用细字重。
 - **内容审核**：检查人群、数字、因果、来源、中文风格与图像含义。
-- **生产导出**：可编辑HTML、1080×1440逐页PNG、整套预览、发布文案、自动版面QA。
+- **生产导出**：默认交付1080×1440逐页PNG与图片包；内部保留可编辑HTML、证据表和版面QA。
 - **定向修改**：只改副标题时保留配图与其他页，不必重新制作整篇。
 
 默认系列为「血糖管理笔记」，四栏目是 **基础认知／饮食运动／行为管理／指标监测**。配置可调整，框架也适用于其他有证据来源的科普主题。这里的选题是待研究问题，不是预设医学结论。

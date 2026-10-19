@@ -66,5 +66,14 @@
     "symptom_title_size": 35,
     "symptom_lead_size": 32,
     "body_size": 28
+  },
+  "delivery": {
+    "input": "content_screenshot",
+    "default_output": "numbered_png_set",
+    "package": "images_only",
+    "caption": "on_request",
+    "tags": "on_request",
+    "separate_publication_title": "on_request",
+    "working_files": "retain_in_project"
   }
 }

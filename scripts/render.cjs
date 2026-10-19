@@ -145,14 +145,16 @@ async function run(opts) {
   const post = validatePost(JSON.parse(fs.readFileSync(input, 'utf8')),profile);
   const html = buildHtml(post, path.dirname(input),profile);
   prepareOut(out, opts.overwrite);
-  const owned = ['index.html','caption.txt'];
+  const owned = ['index.html'];
+  const hasCaption = typeof post.caption === 'string' && post.caption.trim().length > 0;
+  if (hasCaption) owned.push('caption.txt');
   const reserve = name => {
     assert(!fs.existsSync(path.join(out,name)), `Output collides with an unowned file: ${name}`);
     owned.push(name); return path.join(out,name);
   };
   for (const name of owned) assert(!fs.existsSync(path.join(out,name)), `Unowned file collision: ${name}`);
   fs.writeFileSync(path.join(out,'index.html'),html);
-  fs.writeFileSync(path.join(out,'caption.txt'),`${post.title}\n\n${post.caption || ''}\n`);
+  if (hasCaption) fs.writeFileSync(path.join(out,'caption.txt'),`${post.title}\n\n${post.caption}\n`);
   const manifest = () => fs.writeFileSync(path.join(out,'manifest.json'),JSON.stringify({generator:'redbook-create',input_sha256:crypto.createHash('sha256').update(fs.readFileSync(input)).digest('hex'),files:owned},null,2));
   manifest();
   if (opts.htmlOnly) return {html_only:true,out};
