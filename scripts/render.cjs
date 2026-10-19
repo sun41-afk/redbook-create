@@ -24,7 +24,7 @@ function categoryMap(profile) {
   }
   return map;
 }
-const KINDS = new Set(['cover', 'evidence', 'cards', 'steps', 'summary']);
+const KINDS = new Set(['cover', 'evidence', 'cards', 'steps', 'summary', 'illustrated']);
 const esc = x => String(x ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const text = x => esc(x).replace(/\r?\n/g, '<br>');
 const assert = (ok, msg) => { if (!ok) throw new Error(msg); };
@@ -41,6 +41,7 @@ function validatePost(post, profile) {
     assert(KINDS.has(p.kind), `Unknown page kind: ${p.kind}`);
     assert(i === 0 || p.kind !== 'cover', 'Only first page can be cover');
     assert(typeof p.title === 'string' && p.title.trim(), `Missing page title: ${p.id}`);
+    if (p.kind === 'illustrated') assert(typeof p.image === 'string' && p.image.trim(), 'Illustrated page requires a local image');
     if (p.kind !== 'cover') {
       assert(Array.isArray(p.items) && p.items.length > 0 && p.items.length <= 6, `Expected 1–6 items: ${p.id}`);
       for (const item of p.items) {
@@ -82,6 +83,9 @@ function buildHtml(post, inputDir, profile) {
     if (p.kind === 'cover') {
       const art = p.image ? `<img alt="${esc(p.image_alt || '主题插画')}" src="${imageData(p.image, inputDir)}">` : demoArt();
       body = `<main class="cover"><div class="art">${art}</div><div class="covercopy"><h1>${text(p.title)}</h1><p class="subtitle">${text(p.subtitle || '')}</p>${p.art === 'editorial' && !p.image ? '<div class="demo-label">排版结构示例</div>' : ''}</div></main>`;
+    } else if (p.kind === 'illustrated') {
+      const paragraphs = p.items.map(item => `<article><p><strong>${text(item.title)}</strong>${item.text ? `　${text(item.text)}` : ''}</p>${item.source_ids?.length ? `<div class="item-source">${item.source_ids.map(esc).join(' · ')}</div>` : ''}</article>`).join('');
+      body = `<main class="illustrated"><div class="story-art"><img alt="${esc(p.image_alt || '主题场景插画')}" src="${imageData(p.image,inputDir)}"></div><div class="story-copy"><h1>${text(p.title)}</h1><div class="story-paragraphs">${paragraphs}</div>${p.note ? `<p class="story-note">${text(p.note)}</p>` : ''}</div></main>`;
     } else {
       const cards = p.items.map((item, j) => `<article>${p.kind === 'steps' || p.kind === 'summary' ? `<div class="number">${String(j + 1).padStart(2, '0')}</div>` : ''}<div class="item-body">${item.label ? `<span class="item-label">${text(item.label)}</span>` : ''}<h2>${text(item.title)}</h2>${item.text ? `<p>${text(item.text)}</p>` : ''}${item.source_ids?.length ? `<div class="item-source">${item.source_ids.map(esc).join(' · ')}</div>` : ''}</div></article>`).join('');
       body = `<main class="body"><h1>${text(p.title)}</h1>${p.subtitle ? `<p class="subtitle">${text(p.subtitle)}</p>` : ''}<div class="items ${p.kind}">${cards}</div>${p.note ? `<div class="note">${text(p.note)}</div>` : ''}</main>`;
@@ -92,6 +96,7 @@ function buildHtml(post, inputDir, profile) {
 *{box-sizing:border-box}body{margin:0;background:#dfe4de;color:#18221c;font-family:'PingFang SC','Noto Sans CJK SC','Microsoft YaHei',sans-serif;-webkit-font-smoothing:antialiased;--accent:${accent};--soft:${soft}}
 .page{width:1080px;height:1440px;background:white;position:relative;margin:20px auto;overflow:hidden}header{position:absolute;top:48px;left:70px;right:70px;display:flex;justify-content:space-between;align-items:center;font-size:25px;color:#46584b}header b{font-weight:400;color:#78897b}.tag{font-size:22px;padding:7px 18px;background:var(--soft);color:var(--accent);border-radius:3px}
 h1{font-family:'Songti SC','Noto Serif CJK SC','SimSun',serif;font-weight:900;font-size:68px;line-height:1.28;margin:0;letter-spacing:-1px;overflow-wrap:anywhere}h2{font-size:34px;line-height:1.5;margin:0 0 12px}p{font-size:28px;line-height:1.7;color:#56665a;margin:0;overflow-wrap:anywhere}.body{position:absolute;top:160px;left:70px;right:70px}.subtitle{font-size:27px;margin-top:25px;margin-bottom:40px;line-height:1.65;color:#6b776e}.items article{min-width:0}.evidence article{border-top:1px solid #d5ddd5;padding:27px 0 30px}.item-label{display:inline-block;font-size:21px;padding:6px 13px;background:var(--soft);color:var(--accent);margin-bottom:16px}.item-source{font-size:21px;line-height:1.5;color:#76837a;margin-top:17px}.cards{display:grid;grid-template-columns:1fr 1fr;gap:24px}.cards article{padding:34px;background:var(--soft);min-height:260px}.steps article,.summary article{display:flex;gap:28px;align-items:flex-start;padding:30px;border-top:1px solid #d5ddd5;margin-bottom:22px}.steps article{background:var(--soft);border:0}.number{font-family:Georgia,serif;font-size:42px;color:var(--accent);flex:0 0 65px}.item-body{min-width:0}.note{border-left:5px solid var(--accent);background:var(--soft);padding:25px 28px;font-size:26px;line-height:1.7;margin-top:30px;overflow-wrap:anywhere}.art{position:absolute;top:123px;left:0;width:1080px;height:720px;background:var(--soft)}.art img,.art svg{display:block;width:100%;height:100%;object-fit:contain}.covercopy{position:absolute;top:888px;left:70px;right:70px}.covercopy h1{font-size:80px;line-height:1.25}.covercopy .subtitle{border-left:5px solid var(--accent);padding-left:25px;font-family:'Songti SC','Noto Serif CJK SC','SimSun',serif;font-size:32px;font-weight:600;line-height:1.65;margin-top:35px;margin-bottom:0}.demo-label{font-size:20px;color:#78887c;margin-top:18px}.sources{position:absolute;bottom:116px;left:70px;right:70px;font-size:20px;line-height:1.5;color:#7b877f;overflow-wrap:anywhere}footer{position:absolute;bottom:46px;left:70px;right:70px;border-top:2px solid #b6c0b8;padding-top:20px;display:flex;justify-content:space-between;font-size:20px;color:#6e7d72}@media print{body{background:#fff}.page{margin:0;break-after:page}}
+.story-art{position:absolute;top:120px;left:70px;width:940px;height:626px}.story-art img{display:block;width:100%;height:100%;object-fit:contain}.story-copy{position:absolute;top:780px;left:70px;right:70px}.story-copy h1{font-size:60px;font-weight:600;line-height:1.25;letter-spacing:0}.story-paragraphs{margin-top:25px}.story-paragraphs article+article{margin-top:16px}.story-paragraphs p{font-size:28px;line-height:1.65;font-weight:300;color:#38453e}.story-paragraphs strong{font-weight:500;color:#254d41}.story-note{font-size:23px;line-height:1.6;margin-top:16px}
 </style></head><body>${pages}</body></html>`;
 }
 function prepareOut(dir, overwrite) {
@@ -148,7 +153,7 @@ async function run(opts) {
       const el=page.locator('#page-'+i);
       checks.push(await el.evaluate(el=>{
         const root=el.getBoundingClientRect();
-        const content=el.querySelector('.covercopy') || el.querySelector('.body');
+        const content=el.querySelector('.covercopy') || el.querySelector('.story-copy') || el.querySelector('.body');
         const contentBottom=content.getBoundingClientRect().bottom-root.top;
         const sources=el.querySelector('.sources').getBoundingClientRect();
         const footer=el.querySelector('footer').getBoundingClientRect();

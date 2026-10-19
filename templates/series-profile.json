@@ -52,5 +52,13 @@
     "repeated_disclaimers": false,
     "evidence_page": "use supplied grading or study overview",
     "commercial_content": "only when requested"
+  },
+  "interior": {
+    "preferred_layout": "illustrated",
+    "art_direction": "coherent narrative scene matching cover illustration",
+    "body_weight": "300–400",
+    "body_color": "dark charcoal",
+    "paragraphs": "2–3 substantive paragraphs",
+    "evidence_overview": "table or structured comparison"
   }
 }

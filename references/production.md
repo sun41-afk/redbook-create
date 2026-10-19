@@ -18,7 +18,7 @@ post-directory/
 
 ## JSON与排版
 
-`post.example.json`展示支持的结构：cover、evidence、cards、steps、summary。模板支持文字、数字步骤、无字插画和来源区；更复杂机制可改导出的HTML或扩展模板，保持正文为可编辑文字。
+`post.example.json`展示支持的结构：cover、evidence、cards、steps、summary、illustrated。模板支持文字、数字步骤、无字插画和来源区；更复杂机制可改导出的HTML或扩展模板，保持正文为可编辑文字。
 
 渲染器自动读取输入JSON旁的 `series-profile.json`；也可传 `--profile`。可配置栏目ID、标签、强调色与浅底色；当前脚本输出固定1080×1440，更换尺寸需同时调整版式与检查。
 
@@ -64,3 +64,9 @@ node scripts/render.cjs --input examples/post.example.json --out /tmp/xhs-previe
 - 保留上一个版本；用户未要求时不删除历史版本。
 - 打包只含成品、可编辑源文件、来源/审核状态与提示词，不含浏览器、node_modules、缓存、账号信息和整段聊天记录。
 - 返回封面或总览预览、完整包和源文件位置。没有实际发布时说“可交付/已导出”，不说“已发布”。
+
+## illustrated 页面
+
+核心内容页优先用 illustrated：image 为项目内插画路径，image_alt 说明场景，title 为图下主题名，items 为2–3段正文，每项 title 是段首重点词、text 为具体论述。sources 放简洁引用；source_ids 也可逐段显示。插画建议3:2无字横图。样稿配图和封面使用同一画风，正文不再拆成小图标卡片。
+
+这类页面的图与文字可分别替换；内容超高时拆页或缩短重复句。自动检查覆盖图下正文，仍需视觉检查图像和细字重的手机可读性。

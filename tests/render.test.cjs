@@ -7,6 +7,16 @@ const {validatePost,buildHtml,imageData,prepareOut,run}=require('../scripts/rend
 const example=require('../examples/post.example.json');
 const clone=()=>structuredClone(example);
 const temp=()=>fs.mkdtempSync(path.join(os.tmpdir(),'xhs-skill-'));
+test('illustrated interior includes embedded image, paragraph and citation',()=>{
+ const root=temp();try{
+  fs.copyFileSync(path.join(__dirname,'../examples/cover-reference.png'),path.join(root,'art.png'));
+  const p=clone();p.pages[1]={id:'story',kind:'illustrated',title:'正文主题',image:'art.png',items:[{title:'研究发现',text:'具体结果 <b>',source_ids:['Source A']}],sources:['Author 2025']};
+  const html=buildHtml(p,root);
+  const story=html.split('data-page-id="story"')[1].split('</section>')[0];
+  assert(story.includes('<img'));assert(story.includes('data:image/png;base64,'));assert(story.includes('具体结果 &lt;b&gt;'));assert(story.includes('Source A'));assert(story.includes('Author 2025'));
+  delete p.pages[1].image;assert.throws(()=>validatePost(p),/requires a local image/);
+ }finally{fs.rmSync(root,{recursive:true,force:true});}
+});
 test('pure-text content is escaped, Chinese preserved',()=>{
  const p=clone();p.pages[1].items[0].text='<script>alert(1)</script> & 血糖';
  const html=buildHtml(p,__dirname);
