@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "review_scope": "secondary-summary",
+  "grading_origin": "",
+  "grading_method": "",
+  "sources": [],
+  "claims": [],
+  "source_fields": [
+    "id",
+    "title",
+    "authors",
+    "year",
+    "url_or_doi",
+    "source_type",
+    "verification_status",
+    "population",
+    "study_design",
+    "sample_size",
+    "limitations"
+  ],
+  "claim_fields": [
+    "id",
+    "source_ids",
+    "original_statement",
+    "publish_statement",
+    "page_ids",
+    "numeric_details",
+    "evidence_label",
+    "uncertainties"
+  ]
+}

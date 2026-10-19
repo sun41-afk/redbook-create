@@ -1,0 +1,33 @@
+id,category,reader_question,reader_need,source_query,status,source_ids,output_path,notes
+foundations-001,foundations,胰岛素抵抗有哪些表现？,了解症状与相关表现,insulin resistance symptoms clinical manifestations,idea,,,待检索；不预设结论
+foundations-002,foundations,胰岛素抵抗和糖前期有什么区别？,区分概念,prediabetes insulin resistance definition guideline,idea,,,待检索；不预设结论
+foundations-003,foundations,没有不舒服，为什么体检会发现糖前？,理解无症状状态,prediabetes asymptomatic screening,idea,,,待检索；不预设结论
+foundations-004,foundations,血糖正常时，胰岛素如何维持平衡？,理解代偿机制,compensatory hyperinsulinemia physiology,idea,,,待检索；不预设结论
+foundations-005,foundations,腰围与代谢健康有什么关系？,理解体征,waist circumference insulin resistance cohort,idea,,,待检索；不预设结论
+foundations-006,foundations,多囊卵巢综合征与胰岛素抵抗有什么关系？,理解相关疾病,PCOS insulin resistance guideline,idea,,,待检索；不预设结论
+foundations-007,foundations,睡眠不足与胰岛素敏感性有什么关系？,区分机制与长期结果,sleep restriction insulin sensitivity randomized trial,idea,,,待检索；不预设结论
+foundations-008,foundations,脂肪肝与血糖异常有哪些联系？,理解代谢关联,MASLD insulin resistance longitudinal study,idea,,,待检索；不预设结论
+food-movement-001,food-movement,饭后走路的研究，测量了什么？,理解餐后活动证据,postprandial walking randomized crossover trial,idea,,,待检索；不预设结论
+food-movement-002,food-movement,同样的主食份量，搭配改变会怎样？,了解组合餐研究,mixed meal postprandial glucose trial,idea,,,待检索；不预设结论
+food-movement-003,food-movement,久坐期间起身活动，有哪些研究？,寻找可执行活动,interrupt prolonged sitting glucose randomized trial,idea,,,待检索；不预设结论
+food-movement-004,food-movement,抗阻训练如何参与血糖管理？,理解训练方式,resistance training type 2 diabetes randomized trial,idea,,,待检索；不预设结论
+food-movement-005,food-movement,有氧与抗阻组合，研究结果如何？,比较运动方案,combined aerobic resistance diabetes trial,idea,,,待检索；不预设结论
+food-movement-006,food-movement,进餐顺序对餐后血糖有什么影响？,理解短期指标,food order postprandial glycemia trial,idea,,,待检索；不预设结论
+food-movement-007,food-movement,膳食纤维研究中的摄入量与结果如何？,理解剂量与证据,dietary fiber type 2 diabetes clinical trial,idea,,,待检索；不预设结论
+food-movement-008,food-movement,不同运动时间的研究，能回答什么？,比较时机,exercise timing glucose randomized trial,idea,,,待检索；不预设结论
+behavior-001,behavior,怎样把“多运动”写成一个具体计划？,把目标变为行为,implementation intentions physical activity diabetes,idea,,,待检索；不预设结论
+behavior-002,behavior,记录饮食，哪些信息最有用？,降低记录负担,dietary self monitoring behavior change diabetes,idea,,,待检索；不预设结论
+behavior-003,behavior,控糖计划中断后，怎样重新开始？,处理执行障碍,lapse recovery lifestyle intervention diabetes,idea,,,待检索；不预设结论
+behavior-004,behavior,每周复盘可以看哪些内容？,建立反馈方法,self monitoring feedback diabetes prevention program,idea,,,待检索；不预设结论
+behavior-005,behavior,怎样安排更容易执行的睡眠计划？,优化睡眠习惯,sleep intervention metabolic health randomized trial,idea,,,待检索；不预设结论
+behavior-006,behavior,环境安排能帮助减少执行阻力吗？,设计支持环境,environment behavior change physical activity trial,idea,,,待检索；不预设结论
+behavior-007,behavior,生活方式研究中的随访支持是什么？,认识支持系统,DPP lifestyle intervention behavioral support protocol,idea,,,待检索；不预设结论
+behavior-008,behavior,选择一个小目标，怎样逐步调整？,目标设定与调整,goal setting action planning diabetes self management,idea,,,待检索；不预设结论
+monitoring-001,monitoring,空腹血糖与糖化血红蛋白分别反映什么？,理解检查指标,fasting plasma glucose HbA1c guideline,idea,,,待检索；不预设结论
+monitoring-002,monitoring,CGM测到的是什么？,理解设备测量,continuous glucose monitoring interstitial glucose,idea,,,待检索；不预设结论
+monitoring-003,monitoring,同一顿饭两次曲线不同，可能有哪些原因？,理解变化来源,intraindividual postprandial glucose variability,idea,,,待检索；不预设结论
+monitoring-004,monitoring,佩戴CGM时，哪些生活信息值得记录？,建立数据上下文,CGM lifestyle meal activity logging study,idea,,,待检索；不预设结论
+monitoring-005,monitoring,一次峰值与整体趋势怎样分别理解？,避免单点解读,CGM metrics consensus glucose variability,idea,,,待检索；不预设结论
+monitoring-006,monitoring,CGM与指尖血糖为什么可能不同？,理解测量差异,CGM blood glucose lag accuracy guidance,idea,,,待检索；不预设结论
+monitoring-007,monitoring,手表的睡眠与活动数据可以补充什么？,理解多设备数据,wearable sleep activity CGM multimodal study,idea,,,待检索；不预设结论
+monitoring-008,monitoring,个人血糖模型的预测怎样验证？,区分预测与测量,personalized glucose prediction prospective validation,idea,,,待检索；不预设结论

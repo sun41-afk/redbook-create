@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "scope": "",
+  "status": "not-started",
+  "issues": [],
+  "issue_fields": [
+    "id",
+    "page_id",
+    "severity",
+    "finding",
+    "proposed_fix",
+    "resolution"
+  ],
+  "checks": {
+    "claims_traceable": null,
+    "numbers_checked": null,
+    "grading_origin_stated": null,
+    "chinese_edited": null,
+    "all_pages_visually_checked": null,
+    "privacy_and_asset_rights_checked": null
+  },
+  "remaining_limitations": []
+}

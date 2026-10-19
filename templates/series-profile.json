@@ -1,0 +1,56 @@
+{
+  "series": "血糖管理笔记",
+  "language": "zh-CN",
+  "width": 1080,
+  "height": 1440,
+  "cover": {
+    "style": "2D animated editorial illustration",
+    "text_in_image": false,
+    "title_style": "short question",
+    "category_position": "top-right"
+  },
+  "categories": [
+    {
+      "id": "foundations",
+      "label": "基础认知",
+      "accent": "#32634b",
+      "scenes": [
+        "人物与身体机制",
+        "症状生活场景"
+      ]
+    },
+    {
+      "id": "food-movement",
+      "label": "饮食运动",
+      "accent": "#ae612e",
+      "scenes": [
+        "餐桌与配餐",
+        "散步与训练"
+      ]
+    },
+    {
+      "id": "behavior",
+      "label": "行为管理",
+      "accent": "#67518e",
+      "scenes": [
+        "睡前准备",
+        "日程与记录"
+      ]
+    },
+    {
+      "id": "monitoring",
+      "label": "指标监测",
+      "accent": "#315e97",
+      "scenes": [
+        "CGM与日常生活",
+        "手表及数据曲线"
+      ]
+    }
+  ],
+  "editorial": {
+    "interior_headings": "direct descriptive topic names",
+    "repeated_disclaimers": false,
+    "evidence_page": "use supplied grading or study overview",
+    "commercial_content": "only when requested"
+  }
+}

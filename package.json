@@ -1,0 +1,13 @@
+{
+  "name": "xiaohongshu-evidence-studio",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Reusable evidence-based Xiaohongshu carousel skill and renderer",
+  "engines": {"node": ">=20"},
+  "scripts": {
+    "test": "node --test tests/*.test.cjs",
+    "check": "python3 scripts/check_bundle.py",
+    "demo": "node scripts/render.cjs --input examples/post.example.json --out demo-output"
+  },
+  "dependencies": {"playwright": "^1.51.0", "sharp": ">=0.34.0 <0.36.0"}
+}

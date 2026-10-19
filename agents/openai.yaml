@@ -1,0 +1,6 @@
+interface:
+  display_name: "Xiaohongshu Evidence Studio"
+  short_description: "小红书循证图文工作室：选题、文献整理、封面插画、内容审核与排版导出"
+  default_prompt: "使用 $xiaohongshu-evidence-studio，把我提供的材料制作成血糖管理笔记：先整理证据，再生成问句封面、逐页内容和3:4图文。"
+policy:
+  allow_implicit_invocation: true

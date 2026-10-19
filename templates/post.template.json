@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "series": "血糖管理笔记",
+  "issue": "001",
+  "category": "foundations",
+  "title": "TODO 填写主标题",
+  "subtitle": "TODO 填写副标题",
+  "caption": "TODO 发布文案",
+  "pages": [
+    {
+      "id": "cover",
+      "kind": "cover",
+      "title": "TODO 问句主标题",
+      "subtitle": "TODO 具体场景副标题",
+      "art": "editorial"
+    },
+    {
+      "id": "evidence",
+      "kind": "evidence",
+      "title": "研究概况",
+      "items": [
+        {
+          "title": "TODO 核心结论",
+          "text": "TODO 研究内容",
+          "label": "研究类型",
+          "source_ids": []
+        }
+      ],
+      "sources": []
+    },
+    {
+      "id": "summary",
+      "kind": "summary",
+      "title": "重点整理",
+      "items": [
+        {
+          "title": "TODO 结论",
+          "text": "TODO 要点"
+        }
+      ]
+    }
+  ]
+}
