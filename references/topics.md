@@ -11,6 +11,16 @@
 
 睡眠选题按重点归类：生理机制归基础认知，睡眠安排归行为管理。优先沿用用户已有栏目，不为适配分类改写选题。
 
+## 个人库独立存放
+
+`python3 scripts/init_library.py --out /path/to/my-redbook-library`
+
+生成 topic-bank.csv、series-profile.json、inbox/ 和 posts/。不放在技能安装目录，不随技能发布到公开仓库。以后指定同一个库，沿用原ID、备注和制作状态；技能升级不覆盖个人库。多库时使用当前项目已指定的库，不悄悄合并。
+
+每篇放在 `posts/<topic-id>/`，原始材料放其 sources/，成品放 output-v1/ 等版本目录。CSV 的 output_path 用相对库路径，source_ids 关联该篇 evidence.json。素材未用于本篇时，保留在 inbox 等待后续选题。
+
+初次使用复制个人 series-profile.json 到每篇项目；new_post.py 默认复制的是技能模板，调用智能体需要用个人配置替换这份新建副本。先读已有CSV再更新，保留未知列与个人备注，更新前保存一份备份，写入后检查ID唯一且未丢行。
+
 ## 新建与维护
 
 1. 新建时复制 `assets/topic-bank.csv` 至工作项目；种子库内容是问题，不是已验证答案。

@@ -1,6 +1,6 @@
-# Xiaohongshu Evidence Studio
+# Redbook Create
 
-**小红书循证笔记工作流：从选题与文献材料，到插画封面、内容审核和可复用图文。**
+**一张内容截图 → 一篇完整笔记 → 持续积累的个人选题库。**
 
 A reusable Codex skill for evidence-based Xiaohongshu carousels. Chinese editorial workflows, a topic library, illustration direction, source review, and a portable 3:4 renderer.
 
@@ -23,30 +23,52 @@ A reusable Codex skill for evidence-based Xiaohongshu carousels. Chinese editori
 将本仓库放入技能目录，文件夹内直接包含 `SKILL.md`：
 
 ```sh
-git clone https://github.com/sun41-afk/xiaohongshu-evidence-studio.git "${CODEX_HOME:-$HOME/.codex}/skills/xiaohongshu-evidence-studio"
+git clone https://github.com/sun41-afk/redbook-create.git "${CODEX_HOME:-$HOME/.codex}/skills/redbook-create"
 ```
 
-已有同名技能时先检查并保留自己的修改，不要覆盖。重新打开或刷新技能列表后，可使用 `$xiaohongshu-evidence-studio`。安装不会自动发布笔记、发送消息或上传用户材料。
+已有同名技能时先检查并保留自己的修改，不要覆盖。重新打开或刷新技能列表后，可使用 `$redbook-create`。安装不会自动发布笔记、发送消息或上传用户材料。
+
+## 持续沉淀自己的内容库
+
+技能是可升级的制作工具，个人内容库存放你的素材、选题、草稿和成品，两者独立。先建立一次：
+
+```sh
+python3 scripts/init_library.py --out /path/to/my-redbook-library
+```
+
+之后可以只附一张截图并说：
+
+> 使用 $redbook-create，把这张内容截图做成完整笔记，沿用我的内容库 /path/to/my-redbook-library，补足研究细节和机制，完成后更新选题库。
+
+智能体会完成读图、证据整理、逐页编辑、封面配图、审核与导出。脚本负责项目管理与排版，不单独执行OCR或替代智能体。图库和引用不会凭空补全。个人内容库不会随技能更新覆盖，也不会自动上传GitHub。
+
+也可先归档输入：
+
+```sh
+python3 scripts/new_post.py --out /path/to/my-redbook-library/posts/topic-001 --title '本篇问题？' --source /path/to/screenshot.png
+```
+
+从旧名称迁移时，保存旧安装目录的自定义修改，安装新名称后合并需要的配置；个人库继续使用原路径，无需重建。旧版本排版manifest仍可由新渲染器读取。
 
 ## 示例调用
 
 ```text
-使用 $xiaohongshu-evidence-studio，依据这张文献整理截图做一篇笔记。
+使用 $redbook-create，依据这张文献整理截图做一篇笔记。
 按“血糖管理笔记”的风格，封面用问句和动画插画，第二页做证据强度，后面每个主题一页。
 ```
 
 ```text
-使用 $xiaohongshu-evidence-studio，给“行为管理”栏目增加10个不重复的选题。
+使用 $redbook-create，给“行为管理”栏目增加10个不重复的选题。
 只维护选题库，先不要做图，也不要预设研究结论。
 ```
 
 ```text
-使用 $xiaohongshu-evidence-studio，审核这篇现有图文。
+使用 $redbook-create，审核这篇现有图文。
 多保留原材料信息，删掉重复的“不代表／不等于”，但保留必要的证据限定。
 ```
 
 ```text
-使用 $xiaohongshu-evidence-studio，只修改封面副标题，其余页和插画保留，导出新版本。
+使用 $redbook-create，只修改封面副标题，其余页和插画保留，导出新版本。
 ```
 
 ## 工作流
@@ -96,7 +118,7 @@ agents/openai.yaml        Codex显示信息
 references/               选题、证据、编辑、封面、审核、制作
 assets/topic-bank.csv     32个种子选题
 templates/                系列、图文、证据与审核模板
-scripts/                  新建项目、渲染、结构检查
+scripts/                  个人库初始化、新建项目、渲染、结构检查
 examples/                 已接受封面风格与中性结构示例
 tests/                    输入、文件安全与工作区行为测试
 ```

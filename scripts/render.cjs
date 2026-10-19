@@ -102,7 +102,7 @@ function prepareOut(dir, overwrite) {
   const manifestPath = path.join(dir, 'manifest.json');
   assert(fs.existsSync(manifestPath), '--overwrite requires a prior renderer manifest');
   const old = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
-  assert(old.generator === 'xiaohongshu-evidence-studio' && Array.isArray(old.files), 'Invalid renderer manifest');
+  assert(['redbook-create', 'xiaohongshu-evidence-studio'].includes(old.generator) && Array.isArray(old.files), 'Invalid renderer manifest');
   for (const name of old.files) {
     assert(typeof name === 'string' && /^(?:index\.html|caption\.txt|qa\.json|preview\.png|\d{2}\.png)$/.test(name), 'Unsafe manifest filename');
     const f = path.join(dir, name);
@@ -130,7 +130,7 @@ async function run(opts) {
   for (const name of owned) assert(!fs.existsSync(path.join(out,name)), `Unowned file collision: ${name}`);
   fs.writeFileSync(path.join(out,'index.html'),html);
   fs.writeFileSync(path.join(out,'caption.txt'),`${post.title}\n\n${post.caption || ''}\n`);
-  const manifest = () => fs.writeFileSync(path.join(out,'manifest.json'),JSON.stringify({generator:'xiaohongshu-evidence-studio',input_sha256:crypto.createHash('sha256').update(fs.readFileSync(input)).digest('hex'),files:owned},null,2));
+  const manifest = () => fs.writeFileSync(path.join(out,'manifest.json'),JSON.stringify({generator:'redbook-create',input_sha256:crypto.createHash('sha256').update(fs.readFileSync(input)).digest('hex'),files:owned},null,2));
   manifest();
   if (opts.htmlOnly) return {html_only:true,out};
   let chromium, sharp;

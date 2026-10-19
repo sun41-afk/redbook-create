@@ -14,11 +14,17 @@ def main():
     parser.add_argument('--title', required=True)
     parser.add_argument('--category', choices=CATEGORIES, default='foundations')
     parser.add_argument('--issue', default='001')
+    parser.add_argument('--source', type=Path, help='Copy one source screenshot, PDF or text file into the workspace.')
     args = parser.parse_args()
     if args.out.exists():
         parser.error('Output directory already exists; select a new directory.')
+    if args.source and not args.source.is_file():
+        parser.error('Source must be an existing file.')
     args.out.mkdir(parents=True)
     (args.out / 'assets').mkdir()
+    if args.source:
+        (args.out / 'sources').mkdir()
+        shutil.copyfile(args.source, args.out / 'sources' / args.source.name)
     data = json.loads((ROOT / 'templates/post.template.json').read_text())
     data.update(title=args.title, category=args.category, issue=args.issue)
     data['pages'][0]['title'] = args.title

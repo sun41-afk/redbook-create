@@ -31,7 +31,7 @@ test('output overwrite only removes manifest-owned files',()=>{
   assert.throws(()=>prepareOut(root,false),/not empty/);
   assert.throws(()=>prepareOut(root,true),/manifest/);
   fs.writeFileSync(path.join(root,'index.html'),'old');
-  fs.writeFileSync(path.join(root,'manifest.json'),JSON.stringify({generator:'xiaohongshu-evidence-studio',files:['index.html']}));
+  fs.writeFileSync(path.join(root,'manifest.json'),JSON.stringify({generator:'redbook-create',files:['index.html']}));
   prepareOut(root,true);assert.equal(fs.readFileSync(path.join(root,'keep.txt'),'utf8'),'user');assert(!fs.existsSync(path.join(root,'index.html')));
  }finally{fs.rmSync(root,{recursive:true,force:true});}
 });

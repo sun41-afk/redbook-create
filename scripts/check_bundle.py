@@ -16,7 +16,7 @@ def main():
     for name in required:
         if not (ROOT / name).is_file(): errors.append(f'Missing {name}')
     skill = (ROOT / 'SKILL.md').read_text()
-    if not skill.startswith('---\nname: xiaohongshu-evidence-studio\ndescription: '):
+    if not skill.startswith('---\nname: redbook-create\ndescription: '):
         errors.append('Invalid skill frontmatter')
     with (ROOT / 'assets/topic-bank.csv').open(newline='') as f:
         rows = list(csv.DictReader(f))
